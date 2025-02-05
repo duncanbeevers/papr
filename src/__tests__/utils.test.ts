@@ -1,5 +1,5 @@
 import { deepStrictEqual, ok } from 'node:assert/strict';
-import { describe, test, TestContext } from 'node:test';
+import { describe, test } from 'node:test';
 import { ObjectId } from 'mongodb';
 import { expectType } from 'ts-expect';
 import { DefaultsOption } from '../schema';
@@ -451,7 +451,7 @@ describe('utils', () => {
     for (const testCase of testCases) {
       const [caseName, { input, expected }] = testCase;
 
-      test(`case ${caseName}`, (t: TestContext) => {
+      test(`case ${caseName}`, () => {
         // Given
         ok(expected.length <= input.length);
 
