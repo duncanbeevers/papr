@@ -452,24 +452,22 @@ describe('utils', () => {
       const [caseName, { input, expected }] = testCase;
 
       test(`case ${caseName}`, (t: TestContext) => {
-        t.plan(4);
         // Given
-
-        t.assert.ok(expected.length <= input.length);
+        ok(expected.length <= input.length);
 
         // When
         const actual = getIds(input);
 
         // Then
-        t.assert.deepStrictEqual(actual, expected);
+        deepStrictEqual(actual, expected);
 
         const isEveryObjectId = actual.every((id) => id instanceof ObjectId);
-        t.assert.ok(isEveryObjectId);
+        ok(isEveryObjectId);
 
         const isEveryHexEquivalent = actual.every(
           (id, index) => id.toHexString() === expected[index].toHexString()
         );
-        t.assert.ok(isEveryHexEquivalent);
+        ok(isEveryHexEquivalent);
       });
     }
   });
